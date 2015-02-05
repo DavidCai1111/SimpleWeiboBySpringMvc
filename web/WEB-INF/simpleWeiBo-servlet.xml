@@ -5,11 +5,23 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <import resource="file:F:\maven\JustSimpleWeiBo\src\main\java\spring-config.xml" />
-    <mvc:annotation-driven />
+
+    <bean id="utf8Charset" class="java.nio.charset.Charset" factory-method="forName">
+        <constructor-arg value="UTF-8"/>
+    </bean>
+
+    <mvc:annotation-driven >
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <constructor-arg ref="utf8Charset"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
     <mvc:resources mapping="/resources/**" location="WEB-INF/rescources/" />
 
     <context:component-scan base-package="com.david.mvc" />
+
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="\WEB-INF\views\"/>

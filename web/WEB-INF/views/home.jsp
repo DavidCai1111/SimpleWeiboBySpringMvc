@@ -26,7 +26,14 @@
         <c:forEach var="weibo" items="${weibos}">
             <li style="list-style: none">
                 <c:out value="${weibo.name}"/>说：  <c:out value="${weibo.content}"/>
+                <c:if test="${weibo.name == username}">
+                    <form action="/delete" method="post" style="display: inline">
+                        <input type="text" name="idForDelete" value="${weibo.id}" class="hidden"/>
+                        <button class="btn btn-danger" type="submit">删除</button>
+                    </form>
+                </c:if>
             </li>
+            <br/>
         </c:forEach>
     </ul>
 

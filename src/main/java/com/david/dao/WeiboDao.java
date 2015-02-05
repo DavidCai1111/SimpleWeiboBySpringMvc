@@ -10,4 +10,5 @@ import java.util.List;
 public interface WeiboDao {
     public List<Weibo> findAll();
     public void SayOne(String user,String content);
+    public void deleteOne(String id);
 }

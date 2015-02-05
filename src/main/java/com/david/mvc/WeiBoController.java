@@ -25,4 +25,10 @@ public class WeiBoController {
         weiboDao.SayOne(request.getParameter("userOfWeibo"),request.getParameter("contentOfWeibo"));
         return "redirect:/";
     }
+
+    @RequestMapping({"/delete"})
+    public String deleteOneWeiBo(){
+        weiboDao.deleteOne(request.getParameter("idForDelete"));
+        return "redirect:/";
+    }
 }
