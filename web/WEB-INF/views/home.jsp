@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
   <head>
     <title>Just a simple WeiBo</title>
@@ -8,6 +9,14 @@
   </head>
   <body>
     <h1>Just a Simple WeiBo</h1>
-    <p>请<a href="">登录</a></p>
+    <p>请<a href=""><button class="btn btn-default btn-primary">登录</button></a></p>
+    <h2>微博列表:</h2>
+    <ol>
+        <c:forEach var="weibo" items="${weibos}">
+            <li>
+                <c:out value="${weibo.name}"/>说：  <c:out value="${weibo.content}"/>
+            </li>
+        </c:forEach>
+    </ol>
   </body>
 </html>
