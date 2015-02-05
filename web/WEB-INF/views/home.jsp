@@ -16,7 +16,7 @@
         </c:when>
         <c:otherwise>
             <p class="text-center">请<a href="/login"><button class="btn btn-default btn-primary">登录</button></a></p>
-            <p class="text-center">或<a href="/login"><button class="btn btn-default btn-primary">注册</button></a></p>
+            <p class="text-center">或<a href="/signUp"><button class="btn btn-default btn-primary">注册</button></a></p>
         </c:otherwise>
     </c:choose>
 

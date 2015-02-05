@@ -1,7 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>登录</title>
+    <title>注册</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
     <script type="text/javascript" src="/resources/js/jquery-2.1.3.min.js"></script>
     <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
@@ -20,6 +20,7 @@
             <input id="passowrd" name="password" class="form-control" type="password" placeholder="请输入密码">
         </div>
         <button type="submit" class="btn btn-default">注册</button>
+        <a href="/" class="btn btn-danger">返回首页</a>
     </form>
 </div>
 
