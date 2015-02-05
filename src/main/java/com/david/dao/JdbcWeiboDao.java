@@ -16,7 +16,7 @@ import java.util.List;
 public class JdbcWeiboDao extends JdbcDaoSupport implements WeiboDao {
 
     private static final String FIND_ALL_WEIBO = "SELECT name,content FROM weibo";
-    public static final String SAY_ONE = "INSERT INTO weibo (name,content) VALUES (? , ?)";
+    public static final String SAY_ONE = "INSERT INTO weibo (name,content) VALUES ( ? , ? )";
 
     @Override
     public List<Weibo> findAll() {
@@ -35,7 +35,7 @@ public class JdbcWeiboDao extends JdbcDaoSupport implements WeiboDao {
 
     @Override
     public void SayOne(String user,String content) {
-        getJdbcTemplate().update(SAY_ONE,new String[]{user,content});
+        getJdbcTemplate().update(SAY_ONE, new String[]{user, content});
     }
 
 }

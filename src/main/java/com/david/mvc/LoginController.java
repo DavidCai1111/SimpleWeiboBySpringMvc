@@ -33,13 +33,10 @@ public class LoginController {
         String password = request.getParameter("password");
         HttpSession session = request.getSession();
         boolean result = userDao.checkUserInfoInForm(username,password);
-        System.out.println("result：" + result);
         if(result == true){
-            System.out.println("登录成功");
             session.setAttribute("username",username);
             return "redirect:/";
         }else {
-            System.out.println("登录失败");
             return "redirect:/login";
         }
     }
