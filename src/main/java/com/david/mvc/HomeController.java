@@ -15,9 +15,6 @@ import java.util.Map;
 public class HomeController {
     private WeiboDao weiboDao;
 
-    public HomeController() {
-    }
-
     @Autowired
     public HomeController(WeiboDao weiboDao) {
         this.weiboDao = weiboDao;
@@ -25,9 +22,8 @@ public class HomeController {
 
     @RequestMapping({"/","/home"})
     public String showHomePage(Map<String,Object> model){
-        System.out.println("inShowHomePage");
         model.put("weibos",weiboDao.findAll());
-        System.out.println(model.entrySet().size());
         return "home";
     }
+
 }

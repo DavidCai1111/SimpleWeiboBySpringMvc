@@ -1,13 +1,10 @@
 package com.david.dao;
 
 import com.david.model.Weibo;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
-import org.springframework.stereotype.Repository;
 
+import javax.servlet.http.HttpServletRequest;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -17,7 +14,10 @@ import java.util.List;
  * 微博信息数据库DAO层
  */
 public class JdbcWeiboDao extends JdbcDaoSupport implements WeiboDao {
+
     private static final String FIND_ALL_WEIBO = "SELECT name,content FROM weibo";
+    public static final String SAY_ONE = "INSERT INTO weibo (name,content) VALUES (? , ?)";
+
     @Override
     public List<Weibo> findAll() {
         List<Weibo> listGet = new ArrayList<Weibo>();
@@ -33,16 +33,9 @@ public class JdbcWeiboDao extends JdbcDaoSupport implements WeiboDao {
         return listGet;
     }
 
-    public static void main(String[] args) {
-        ApplicationContext context = new FileSystemXmlApplicationContext("F:\\maven\\JustSimpleWeiBo\\src\\main\\java\\spring-config.xml");
-        WeiboDao weiboDao = (WeiboDao) context.getBean("WeiBoDao");
-        List<Weibo> listGet = new ArrayList<Weibo>();
-        listGet =   weiboDao.findAll();
-        for (Weibo weibo : listGet){
-            System.out.println(weibo.getName());
-            System.out.println(weibo.getContent());
-            System.out.println("-------------------------");
-        }
+    @Override
+    public void SayOne(String user,String content) {
+        getJdbcTemplate().update(SAY_ONE,new String[]{user,content});
     }
 
 }

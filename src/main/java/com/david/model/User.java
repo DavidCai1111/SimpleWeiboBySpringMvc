@@ -1,7 +1,7 @@
 package com.david.model;
 
 /**
- * Created by caiwei on 2015/2/5.
+ * User model
  */
 public class User {
     private String username;
