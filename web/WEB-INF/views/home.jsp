@@ -12,7 +12,7 @@
     <h1 class="text-center">Just a Simple WeiBo</h1>
     <hr/>
 
-            <p class="text-center">欢迎,<s:authentication property="name"/><a href="/logout"><button class="btn btn-default btn-primary">登出</button></a></p>
+            <p class="text-center">欢迎,<s:authentication property="name" var="nameLogin"/><a href="/logout"><button class="btn btn-default btn-primary">登出</button></a></p>
 
     <h2 class="text-center">微博列表:</h2>
 
@@ -20,7 +20,7 @@
         <c:forEach var="weibo" items="${weibos}">
             <li style="list-style: none">
                 <c:out value="${weibo.name}"/>说：  <c:out value="${weibo.content}"/>
-                <c:if test="${weibo.name == username}">
+                <c:if test="${weibo.name == nameLogin}">
                     <form action="/delete" method="post" style="display: inline">
                         <input type="text" name="idForDelete" value="${weibo.id}" class="hidden"/>
                         <button class="btn btn-danger" type="submit">删除</button>
@@ -30,7 +30,7 @@
             <br/>
         </c:forEach>
     </ul>
-
+    <hr/>
         <div class="container">
             <form action="/say" method="post" class="form-horizontal col-md-5 col-md-offset-4">
                 <input type="text" name="userOfWeibo" class="hidden" value="<s:authentication property="name"/>">

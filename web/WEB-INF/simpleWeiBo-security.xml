@@ -10,6 +10,8 @@
 
         <context:component-scan base-package="com.david"/>
 
+        <security:global-method-security secured-annotations="enabled"/>
+
         <!--配置不过滤的静态资源-->
         <security:http pattern="/rescources/**/**" security="none" />
         <!--配置不过滤的页面-->
@@ -18,9 +20,9 @@
         <!--配置访问权限-->
         <security:http auto-config="true">
             <!--<security:intercept-url pattern="/" access="ROLE_USER"/>-->
-            <security:intercept-url pattern="/login" requires-channel="https"/>
             <security:intercept-url pattern="/**" access="ROLE_ADMIN"/>
             <security:form-login login-page="/login" authentication-failure-url="/login" default-target-url="/home"/>
+            <security:remember-me key="simpleWeiBo" token-validity-seconds="2419200" />
             <security:logout logout-url="/logout"/>
         </security:http>
 

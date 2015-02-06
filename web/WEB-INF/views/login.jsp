@@ -13,11 +13,15 @@
         <form action="/j_spring_security_check" method="post" class="col-md-5 col-md-offset-4">
             <div class="form-group">
                 <label for="username">用户名：</label>
-                <input id="username"  name="j_username" class="form-control" type="text" placeholder="请输入用户名">
+                <input id="username"  name="j_username" class="form-control" type="text" placeholder="请输入用户名"/>
             </div>
             <div class="form-group">
                 <label for="passowrd">密码：</label>
-                <input id="passowrd" name="j_password" class="form-control" type="password" placeholder="请输入密码">
+                <input id="passowrd" name="j_password" class="form-control" type="password" placeholder="请输入密码"/>
+            </div>
+            <div class="form-control">
+                <label for="rememberMe">自动登录</label>
+                <input id="rememberMe" name="_spring_security_remember_me" type="checkbox"/>
             </div>
             <button type="submit" class="btn btn-default">提交</button>
             <a href="/" class="btn btn-danger">返回首页</a>
