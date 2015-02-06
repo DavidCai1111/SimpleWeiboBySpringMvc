@@ -20,5 +20,5 @@
     <bean id="UserDao" class="com.david.dao.JdbcUserDao">
         <property name="dataSource" ref="dataSource"/>
     </bean>
-
+    
 </beans>
