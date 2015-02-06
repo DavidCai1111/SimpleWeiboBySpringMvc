@@ -18,8 +18,10 @@
         <!--配置访问权限-->
         <security:http auto-config="true">
             <!--<security:intercept-url pattern="/" access="ROLE_USER"/>-->
+            <security:intercept-url pattern="/login" requires-channel="https"/>
             <security:intercept-url pattern="/**" access="ROLE_ADMIN"/>
             <security:form-login login-page="/login" authentication-failure-url="/login" default-target-url="/home"/>
+            <security:logout logout-url="/logout"/>
         </security:http>
 
         <security:authentication-manager>

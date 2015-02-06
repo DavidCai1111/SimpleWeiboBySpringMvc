@@ -11,17 +11,8 @@
   <body>
     <h1 class="text-center">Just a Simple WeiBo</h1>
     <hr/>
-    <h2 class="text-center">Spring Security登录用户:<s:authentication property="name"/></h2>
-    <hr/>
-    <c:choose>
-        <c:when test="${username != null}">
-            <p class="text-center">欢迎<c:out value="${username}"/>,<a href="/logout"><button class="btn btn-default btn-primary">登出</button></a></p>
-        </c:when>
-        <c:otherwise>
-            <p class="text-center">请<a href="/login"><button class="btn btn-default btn-primary">登录</button></a></p>
-            <p class="text-center">或<a href="/signUp"><button class="btn btn-default btn-primary">注册</button></a></p>
-        </c:otherwise>
-    </c:choose>
+
+            <p class="text-center">欢迎,<s:authentication property="name"/><a href="/logout"><button class="btn btn-default btn-primary">登出</button></a></p>
 
     <h2 class="text-center">微博列表:</h2>
 
@@ -40,14 +31,12 @@
         </c:forEach>
     </ul>
 
-    <c:if test="${username != null}">
         <div class="container">
             <form action="/say" method="post" class="form-horizontal col-md-5 col-md-offset-4">
-                <input type="text" name="userOfWeibo" class="hidden" value="${username}">
-                <p><c:out value="${username}"/>说：<input type="text" name="contentOfWeibo" class="form-control" placeholder="说点什么..."/><button type="submit" class="btn btn-primary">发送</button></p>
+                <input type="text" name="userOfWeibo" class="hidden" value="<s:authentication property="name"/>">
+                <p><s:authentication property="name"/>说：<input type="text" name="contentOfWeibo" class="form-control" placeholder="说点什么..."/><button type="submit" class="btn btn-primary">发送</button></p>
             </form>
         </div>
-    </c:if>
 
   </body>
 </html>
