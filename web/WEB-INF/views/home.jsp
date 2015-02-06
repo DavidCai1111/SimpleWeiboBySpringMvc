@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="s" uri="http://www.springframework.org/security/tags" %>
 <html>
   <head>
     <title>Just a simple WeiBo</title>
@@ -9,6 +10,8 @@
   </head>
   <body>
     <h1 class="text-center">Just a Simple WeiBo</h1>
+    <hr/>
+    <h2 class="text-center">Spring Security登录用户:<s:authentication property="name"/></h2>
     <hr/>
     <c:choose>
         <c:when test="${username != null}">

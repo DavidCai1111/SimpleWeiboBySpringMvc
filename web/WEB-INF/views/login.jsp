@@ -9,7 +9,7 @@
 <body>
     <h1 class="text-center">登录页</h1>
 
-    <div class="container">
+<%--    <div class="container">
         <form action="dologin" method="post" class="col-md-5 col-md-offset-4">
             <div class="form-group">
                 <label for="username">用户名：</label>
@@ -18,6 +18,20 @@
             <div class="form-group">
                 <label for="passowrd">密码：</label>
                 <input id="passowrd" name="password" class="form-control" type="password" placeholder="请输入密码">
+            </div>
+            <button type="submit" class="btn btn-default">提交</button>
+            <a href="/" class="btn btn-danger">返回首页</a>
+        </form>
+    </div>--%>
+    <div class="container">
+        <form action="/j_spring_security_check" method="post" class="col-md-5 col-md-offset-4">
+            <div class="form-group">
+                <label for="username">用户名：</label>
+                <input id="username"  name="j_username" class="form-control" type="text" placeholder="请输入用户名">
+            </div>
+            <div class="form-group">
+                <label for="passowrd">密码：</label>
+                <input id="passowrd" name="j_password" class="form-control" type="password" placeholder="请输入密码">
             </div>
             <button type="submit" class="btn btn-default">提交</button>
             <a href="/" class="btn btn-danger">返回首页</a>
