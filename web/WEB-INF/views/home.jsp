@@ -12,7 +12,7 @@
     <h1 class="text-center">Just a Simple WeiBo</h1>
     <hr/>
 
-            <p class="text-center">欢迎,<s:authentication property="name" var="nameLogin"/><a href="/logout"><button class="btn btn-default btn-primary">登出</button></a></p>
+            <p class="text-center">欢迎<s:authentication property="name" var="nameLogin"/>${nameLogin},<a href="/logout"><button class="btn btn-default btn-primary">登出</button></a></p>
 
     <h2 class="text-center">微博列表:</h2>
 
@@ -30,7 +30,9 @@
             <br/>
         </c:forEach>
     </ul>
+
     <hr/>
+
         <div class="container">
             <form action="/say" method="post" class="form-horizontal col-md-5 col-md-offset-4">
                 <input type="text" name="userOfWeibo" class="hidden" value="<s:authentication property="name"/>">
