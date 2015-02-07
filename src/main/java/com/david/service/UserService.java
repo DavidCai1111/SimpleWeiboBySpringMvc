@@ -33,10 +33,18 @@ public class UserService implements UserDetailsService {
         user.setAccountNonLocked(true);
         user.setEnabled(true);
         user.setCredentialsNonExpired(true);
-        System.out.println("-------------------------------");
-        System.out.println(user.getAuthorities());
-        System.out.println("-------------------------------");
         return user;
     }
 
+    public boolean findTheUser(String username){
+        return userDao.FindTheUser(username);
+    }
+
+    public void addOneUser(String username,String password){
+        userDao.AddOneUser(username,password);
+    }
+
+    public boolean checkUserInfoInForm(String username,String password){
+        return userDao.checkUserInfoInForm(username,password);
+    }
 }

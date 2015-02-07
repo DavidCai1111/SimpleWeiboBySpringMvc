@@ -1,6 +1,7 @@
 package com.david.mvc;
 
 import com.david.dao.WeiboDao;
+import com.david.service.WeiboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -13,16 +14,16 @@ import java.util.Map;
  */
 @Controller
 public class HomeController {
-    private WeiboDao weiboDao;
+    private WeiboService weiboService;
 
     @Autowired
-    public HomeController(WeiboDao weiboDao) {
-        this.weiboDao = weiboDao;
+    public HomeController(WeiboService weiboService) {
+        this.weiboService = weiboService;
     }
 
     @RequestMapping({"/","/home"})
     public String showHomePage(Map<String,Object> model){
-        model.put("weibos",weiboDao.findAll());
+        model.put("weibos",weiboService.findAll());
         return "home";
     }
 

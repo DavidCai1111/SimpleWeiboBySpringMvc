@@ -1,6 +1,7 @@
 package com.david.mvc;
 
 import com.david.dao.UserDao;
+import com.david.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,12 +14,12 @@ import javax.servlet.http.HttpSession;
 @Controller
 public class LoginController {
 
-    private UserDao userDao;
+    private UserService userService;
     private HttpServletRequest request;
 
     @Autowired
-    public LoginController(UserDao userDao, HttpServletRequest request) {
-        this.userDao = userDao;
+    public LoginController(UserService userService, HttpServletRequest request) {
+        this.userService = userService;
         this.request = request;
     }
 
@@ -32,7 +33,7 @@ public class LoginController {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
         HttpSession session = request.getSession();
-        boolean result = userDao.checkUserInfoInForm(username,password);
+        boolean result = userService.checkUserInfoInForm(username, password);
         if(result == true){
             session.setAttribute("username",username);
             return "redirect:/";

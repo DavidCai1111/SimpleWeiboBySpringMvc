@@ -19,8 +19,7 @@
 
         <!--配置访问权限-->
         <security:http auto-config="true">
-            <!--<security:intercept-url pattern="/" access="ROLE_USER"/>-->
-            <security:intercept-url pattern="/**" access="ROLE_ADMIN"/>
+            <security:intercept-url pattern="/**" access="ROLE_USER"/>
             <security:form-login login-page="/login" authentication-failure-url="/login" default-target-url="/home"/>
             <security:remember-me key="simpleWeiBo" token-validity-seconds="2419200" />
             <security:logout logout-url="/logout"/>

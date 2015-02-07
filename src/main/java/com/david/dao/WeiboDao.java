@@ -11,4 +11,5 @@ public interface WeiboDao {
     public List<Weibo> findAll();
     public void SayOne(String user,String content);
     public void deleteOne(String id);
+    public List<Weibo> getWeiboByUsername(String username);
 }

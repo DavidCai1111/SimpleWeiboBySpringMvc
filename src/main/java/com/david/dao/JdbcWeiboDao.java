@@ -18,6 +18,7 @@ public class JdbcWeiboDao extends JdbcDaoSupport implements WeiboDao {
     private static final String FIND_ALL_WEIBO = "SELECT id,name,content FROM weibo";
     public static final String SAY_ONE = "INSERT INTO weibo (name,content) VALUES ( ? , ? )";
     public static final String DELETE_ONE = "DELETE FROM weibo WHERE id = ?";
+    public static final String GET_WEIBO_BY_USERNAME= "SELECT id,name,content FROM weibo WHERE name = ?";
 
     @Override
     public List<Weibo> findAll() {
@@ -43,6 +44,22 @@ public class JdbcWeiboDao extends JdbcDaoSupport implements WeiboDao {
     @Override
     public void deleteOne(String id) {
         getJdbcTemplate().update(DELETE_ONE,new String[]{id});
+    }
+
+    @Override
+    public List<Weibo> getWeiboByUsername(String username) {
+        List<Weibo> listGet = new ArrayList<Weibo>();
+        listGet = getJdbcTemplate().query(GET_WEIBO_BY_USERNAME, new String[]{username}, new RowMapper<Weibo>() {
+            @Override
+            public Weibo mapRow(ResultSet resultSet, int i) throws SQLException {
+                Weibo weibo = new Weibo();
+                weibo.setId(resultSet.getInt("id"));
+                weibo.setName(resultSet.getString("name"));
+                weibo.setContent(resultSet.getString("content"));
+                return weibo;
+            }
+        });
+        return listGet;
     }
 
 }
