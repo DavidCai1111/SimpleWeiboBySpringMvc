@@ -28,7 +28,7 @@ public class WeiBoAbout {
         List<Weibo> listGet = weiboService.getWeiboByUsername(username);
         String contentsOfWeibos = "";
         for (Weibo weibo:listGet){
-            contentsOfWeibos += (weibo.getContent() + "; ");
+            contentsOfWeibos += (weibo.getName() + ":" + weibo.getContent() + "; ");
         }
         return contentsOfWeibos;
     }

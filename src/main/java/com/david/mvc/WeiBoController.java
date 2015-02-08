@@ -5,6 +5,8 @@ import com.david.service.WeiboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -27,7 +29,7 @@ public class WeiBoController {
         return "redirect:/";
     }
 
-    @RequestMapping({"/delete"})
+    @RequestMapping(value = {"/delete"},method = RequestMethod.DELETE)
     public String deleteOneWeiBo(){
         weiboService.delete(request.getParameter("idForDelete"));
         return "redirect:/";

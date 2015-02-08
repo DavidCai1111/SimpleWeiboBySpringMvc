@@ -22,6 +22,7 @@
                 <c:out value="${weibo.name}"/>说：  <c:out value="${weibo.content}"/>
                 <c:if test="${weibo.name == nameLogin}">
                     <form action="/delete" method="post" style="display: inline">
+                        <input type="hidden" name="_method" value="delete" />
                         <input type="text" name="idForDelete" value="${weibo.id}" class="hidden"/>
                         <button class="btn btn-danger" type="submit">删除</button>
                     </form>
