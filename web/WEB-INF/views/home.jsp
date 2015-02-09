@@ -14,6 +14,8 @@
 
             <p class="text-center">欢迎<s:authentication property="name" var="nameLogin"/>${nameLogin},<a href="/logout"><button class="btn btn-default btn-primary">登出</button></a></p>
 
+    <hr/>
+
     <h2 class="text-center">微博列表:</h2>
 
     <ul class="text-center">
@@ -31,13 +33,14 @@
             <br/>
         </c:forEach>
     </ul>
-
+    <br/>
+    <div class="text-center"><span>共${weibos.size()}条 &nbsp;</span><a id="previousPage" class="btn btn-primary">上一页</a><span class="text-info">  0/0页  </span><a id="nextPage" class="btn btn-primary">下一页</a></div>
     <hr/>
 
         <div class="container">
-            <form action="/say" method="post" class="form-horizontal col-md-5 col-md-offset-4">
+            <form action="/say" method="post" class="form-horizontal form-inline col-md-5 col-md-offset-4">
                 <input type="text" name="userOfWeibo" class="hidden" value="<s:authentication property="name"/>">
-                <p><s:authentication property="name"/>说：<input type="text" name="contentOfWeibo" class="form-control" placeholder="说点什么..."/><button type="submit" class="btn btn-primary">发送</button></p>
+                <p><s:authentication property="name"/>说：<input type="text" name="contentOfWeibo" class="form-control" placeholder="说点什么..."/>&nbsp;<button type="submit" class="btn btn-primary">发送</button></p>
             </form>
         </div>
 
