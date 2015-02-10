@@ -7,7 +7,9 @@
       <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
       <script type="text/javascript" src="/resources/js/jquery-2.1.3.min.js"></script>
       <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="/resources/js/home.js"></script>
   </head>
+
   <body>
     <h1 class="text-center">Just a Simple WeiBo</h1>
     <hr/>
@@ -34,7 +36,14 @@
         </c:forEach>
     </ul>
     <br/>
-    <div class="text-center"><span>共${weibos.size()}条 &nbsp;</span><a id="previousPage" class="btn btn-primary">上一页</a><span class="text-info">  0/0页  </span><a id="nextPage" class="btn btn-primary">下一页</a></div>
+
+    <div class="text-center">
+        <span>共${page.totalWeibos}条 &nbsp;</span>
+        <a id="previousPage" class="btn btn-primary <c:if test='${page.pageNow == 1}'>disabled</c:if>">上一页</a>
+        <span class="text-info"> <span id="${page.pageNow}">${page.pageNow}</span>/${page.totalPage}页  </span>
+        <a id="nextPage" class="btn btn-primary <c:if test='${page.pageNow == page.totalPage}'>disabled</c:if>">下一页</a>
+
+    </div>
     <hr/>
 
         <div class="container">

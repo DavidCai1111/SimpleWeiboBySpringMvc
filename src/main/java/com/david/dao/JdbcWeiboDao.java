@@ -1,5 +1,6 @@
 package com.david.dao;
 
+import com.david.model.Page;
 import com.david.model.Weibo;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
@@ -19,6 +20,7 @@ public class JdbcWeiboDao extends JdbcDaoSupport implements WeiboDao {
     public static final String SAY_ONE = "INSERT INTO weibo (name,content) VALUES ( ? , ? )";
     public static final String DELETE_ONE = "DELETE FROM weibo WHERE id = ?";
     public static final String GET_WEIBO_BY_USERNAME= "SELECT id,name,content FROM weibo WHERE name = ?";
+    public static final String FIND_WEIBOS_BY_LIMIT = "SELECT id,name,content FROM weibo LIMIT ? , ?";
 
     @Override
     public List<Weibo> findAll() {
@@ -60,6 +62,23 @@ public class JdbcWeiboDao extends JdbcDaoSupport implements WeiboDao {
             }
         });
         return listGet;
+    }
+
+    @Override
+    public List<Weibo> findWeiboByLimit(String index) {
+        if(Integer.parseInt(index) <= 0){
+            index = "1";
+        }
+        return getJdbcTemplate().query(FIND_WEIBOS_BY_LIMIT, new Integer[]{Integer.parseInt(index), Page.WEIBOS_SHOWN_PER_PAGE}, new RowMapper<Weibo>() {
+            @Override
+            public Weibo mapRow(ResultSet resultSet, int i) throws SQLException {
+                Weibo weibo = new Weibo();
+                weibo.setId(resultSet.getInt("id"));
+                weibo.setName(resultSet.getString("name"));
+                weibo.setContent(resultSet.getString("content"));
+                return weibo;
+            }
+        });
     }
 
 }

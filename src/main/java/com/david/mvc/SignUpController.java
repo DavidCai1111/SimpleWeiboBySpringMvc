@@ -1,6 +1,5 @@
 package com.david.mvc;
 
-import com.david.dao.UserDao;
 import com.david.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,7 +40,7 @@ public class SignUpController {
 
         boolean isSigned = userService.findTheUser(username);
 
-        if(isSigned == true){
+        if(isSigned){
             return "redirect:/signUp";
         }else {
             userService.addOneUser(username,password);

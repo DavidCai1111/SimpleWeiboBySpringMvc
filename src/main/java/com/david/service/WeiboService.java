@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 /**
- * Created by caiwei on 2015/2/7.
+ * Weibo相关业务层
  */
 @Service
 public class WeiboService {
@@ -34,5 +34,10 @@ public class WeiboService {
 
     public List<Weibo> findAll(){
         return weiboDao.findAll();
+    }
+
+    public List<Weibo> findWeiboByLimit(String index){
+        int indexNeed = (Integer.parseInt(index) - 1) * 5;
+        return weiboDao.findWeiboByLimit(indexNeed + "");
     }
 }

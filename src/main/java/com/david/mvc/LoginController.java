@@ -1,6 +1,5 @@
 package com.david.mvc;
 
-import com.david.dao.UserDao;
 import com.david.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,7 +33,7 @@ public class LoginController {
         String password = request.getParameter("password");
         HttpSession session = request.getSession();
         boolean result = userService.checkUserInfoInForm(username, password);
-        if(result == true){
+        if(result){
             session.setAttribute("username",username);
             return "redirect:/";
         }else {

@@ -16,6 +16,7 @@
         <security:http pattern="/rescources/**/**" security="none" />
         <!--配置不过滤的页面-->
         <security:http pattern="/login" security="none"/>
+        <security:http pattern="/signUp" security="none"/>
         <security:http pattern="/weibo/**" security="none"/>
 
         <!--配置访问权限-->

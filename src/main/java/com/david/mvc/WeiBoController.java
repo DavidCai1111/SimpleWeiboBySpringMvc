@@ -1,6 +1,5 @@
 package com.david.mvc;
 
-import com.david.dao.WeiboDao;
 import com.david.service.WeiboService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -34,4 +33,5 @@ public class WeiBoController {
         weiboService.delete(request.getParameter("idForDelete"));
         return "redirect:/";
     }
+
 }
