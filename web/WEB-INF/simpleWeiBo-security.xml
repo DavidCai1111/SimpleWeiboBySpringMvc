@@ -17,12 +17,14 @@
         <!--配置不过滤的页面-->
         <security:http pattern="/login" security="none"/>
         <security:http pattern="/signUp" security="none"/>
+        <security:http pattern="/doSignup" security="none"/>
         <security:http pattern="/weibo/**" security="none"/>
 
         <!--配置访问权限-->
         <security:http auto-config="true">
+            <security:intercept-url pattern="/admin/**" access="ROLE_ADMIN"/>
             <security:intercept-url pattern="/**" access="ROLE_USER"/>
-            <security:form-login login-page="/login" authentication-failure-url="/login" default-target-url="/home"/>
+            <security:form-login login-page="/login" authentication-failure-url="/login" default-target-url="/"/>
             <security:remember-me key="simpleWeiBo" token-validity-seconds="2419200" />
             <security:logout logout-url="/logout"/>
         </security:http>
