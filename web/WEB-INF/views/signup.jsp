@@ -20,6 +20,7 @@
             <input id="passowrd" name="password" class="form-control" type="password" placeholder="请输入密码">
         </div>
         <button type="submit" class="btn btn-default">注册</button>
+        <a href="/login" class="btn btn-primary">登录</a>
         <a href="/" class="btn btn-danger">返回首页</a>
     </form>
 </div>

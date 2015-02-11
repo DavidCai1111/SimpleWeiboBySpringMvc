@@ -44,8 +44,8 @@ public class SignUpController {
             return "redirect:/signUp";
         }else {
             userService.addOneUser(username,password);
-            request.getSession().setAttribute("username",username);
-            return "redirect:/";
+            request.getSession().setAttribute("signUpSucceed",true);
+            return "redirect:/login";
         }
 
     }
