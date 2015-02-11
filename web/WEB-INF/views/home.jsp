@@ -20,7 +20,7 @@
 
     <h2 class="text-center">微博列表:</h2>
 
-    <ul class="text-center">
+    <ul id="weiboList" class="text-center">
         <c:forEach var="weibo" items="${weibos}">
             <li style="list-style: none">
                 <c:out value="${weibo.name}"/>说：  <c:out value="${weibo.content}"/>
@@ -40,7 +40,7 @@
     <div class="text-center">
         <span>共${page.totalWeibos}条 &nbsp;</span>
         <a id="previousPage" class="btn btn-primary <c:if test='${page.pageNow == 1}'>disabled</c:if>">上一页</a>
-        <span class="text-info"> <span id="${page.pageNow}">${page.pageNow}</span>/${page.totalPage}页  </span>
+        <span class="text-info"> <span id="pageNow">${page.pageNow}</span>/<span id="TotalPages">${page.totalPage}页 </span> </span>
         <a id="nextPage" class="btn btn-primary <c:if test='${page.pageNow == page.totalPage}'>disabled</c:if>">下一页</a>
 
     </div>

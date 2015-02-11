@@ -21,6 +21,7 @@ public class JdbcWeiboDao extends JdbcDaoSupport implements WeiboDao {
     public static final String DELETE_ONE = "DELETE FROM weibo WHERE id = ?";
     public static final String GET_WEIBO_BY_USERNAME= "SELECT id,name,content FROM weibo WHERE name = ?";
     public static final String FIND_WEIBOS_BY_LIMIT = "SELECT id,name,content FROM weibo LIMIT ? , ?";
+    public static final String FIND_WEIBOS_TILL_TOP = "SELECT id,name,content FROM weibo LIMIT ?";
 
     @Override
     public List<Weibo> findAll() {
@@ -65,20 +66,35 @@ public class JdbcWeiboDao extends JdbcDaoSupport implements WeiboDao {
     }
 
     @Override
-    public List<Weibo> findWeiboByLimit(String index) {
+    public List<Weibo> findWeiboByLimit(String index,boolean isToTop) {
         if(Integer.parseInt(index) <= 0){
             index = "1";
         }
-        return getJdbcTemplate().query(FIND_WEIBOS_BY_LIMIT, new Integer[]{Integer.parseInt(index), Page.WEIBOS_SHOWN_PER_PAGE}, new RowMapper<Weibo>() {
-            @Override
-            public Weibo mapRow(ResultSet resultSet, int i) throws SQLException {
-                Weibo weibo = new Weibo();
-                weibo.setId(resultSet.getInt("id"));
-                weibo.setName(resultSet.getString("name"));
-                weibo.setContent(resultSet.getString("content"));
-                return weibo;
-            }
-        });
+        if (isToTop == false){
+            System.out.println("in false");
+            return getJdbcTemplate().query(FIND_WEIBOS_BY_LIMIT, new Integer[]{Integer.parseInt(index), Page.WEIBOS_SHOWN_PER_PAGE}, new RowMapper<Weibo>() {
+                @Override
+                public Weibo mapRow(ResultSet resultSet, int i) throws SQLException {
+                    Weibo weibo = new Weibo();
+                    weibo.setId(resultSet.getInt("id"));
+                    weibo.setName(resultSet.getString("name"));
+                    weibo.setContent(resultSet.getString("content"));
+                    return weibo;
+                }
+            });
+        }else {
+            System.out.println("in true");
+            return getJdbcTemplate().query(FIND_WEIBOS_TILL_TOP, new Integer[]{Integer.parseInt(index)}, new RowMapper<Weibo>() {
+                @Override
+                public Weibo mapRow(ResultSet resultSet, int i) throws SQLException {
+                    Weibo weibo = new Weibo();
+                    weibo.setId(resultSet.getInt("id"));
+                    weibo.setName(resultSet.getString("name"));
+                    weibo.setContent(resultSet.getString("content"));
+                    return weibo;
+                }
+            });
+        }
     }
 
 }

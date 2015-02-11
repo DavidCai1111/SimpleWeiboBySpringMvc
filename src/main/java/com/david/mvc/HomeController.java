@@ -29,7 +29,7 @@ public class HomeController {
         this.request = request;
     }
 
-    @RequestMapping({"/","/home"})
+    @RequestMapping({"/"})
     public String showHomePage(Map<String,Object> model){
         List<Weibo> listGet;
         HttpSession session = request.getSession();
@@ -50,11 +50,11 @@ public class HomeController {
             page.setTotalWeibos(listGet.size());
         }else {
             System.out.println("pageTo: " + session.getAttribute("pageTo").toString());
-            listGet = weiboService.findWeiboByLimit(session.getAttribute("pageTo").toString());
+            listGet = weiboService.findWeiboByLimit(session.getAttribute("pageTo").toString(),session.getAttribute("TotalWeibos").toString());
             //设置page
             page.setTotalPage(Integer.parseInt(session.getAttribute("pageTotal").toString()));
             System.out.println("pageTotal: " + session.getAttribute("pageTotal").toString());
-            page.setPageNow(Integer.parseInt(session.getAttribute("pageNow").toString()));
+            page.setPageNow(Integer.parseInt(session.getAttribute("pageTo").toString()));
             page.setTotalWeibos(Integer.parseInt(session.getAttribute("TotalWeibos").toString()));
         }
         //设置微博分页

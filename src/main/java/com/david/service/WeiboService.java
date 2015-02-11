@@ -1,6 +1,7 @@
 package com.david.service;
 
 import com.david.dao.WeiboDao;
+import com.david.model.Page;
 import com.david.model.Weibo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -36,8 +37,16 @@ public class WeiboService {
         return weiboDao.findAll();
     }
 
-    public List<Weibo> findWeiboByLimit(String index){
-        int indexNeed = (Integer.parseInt(index) - 1) * 5;
-        return weiboDao.findWeiboByLimit(indexNeed + "");
+    public List<Weibo> findWeiboByLimit(String index , String totalWeibos){
+        int indexNeed;
+        if((Integer.parseInt(totalWeibos) - Integer.parseInt(index) * 5) >= 0){
+            indexNeed = Integer.parseInt(totalWeibos) - (Integer.parseInt(index) - 1) * 5 - Page.WEIBOS_SHOWN_PER_PAGE;
+            System.out.println("indexNeed: " + indexNeed);
+            return weiboDao.findWeiboByLimit(indexNeed + "",false);
+        }else {
+            indexNeed = Integer.parseInt(totalWeibos) - (Integer.parseInt(index)-1) * 5;
+            System.out.println("indexNeed: " + indexNeed);
+            return weiboDao.findWeiboByLimit(indexNeed + "",true);
+        }
     }
 }

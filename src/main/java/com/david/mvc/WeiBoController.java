@@ -25,12 +25,14 @@ public class WeiBoController {
     @RequestMapping({"/say"})
     public String sayAWeiBo(){
         weiboService.sayOne(request.getParameter("userOfWeibo"), request.getParameter("contentOfWeibo"));
+        request.getSession().removeAttribute("pageTo");
         return "redirect:/";
     }
 
     @RequestMapping(value = {"/delete"},method = RequestMethod.DELETE)
     public String deleteOneWeiBo(){
         weiboService.delete(request.getParameter("idForDelete"));
+        request.getSession().removeAttribute("pageTo");
         return "redirect:/";
     }
 
