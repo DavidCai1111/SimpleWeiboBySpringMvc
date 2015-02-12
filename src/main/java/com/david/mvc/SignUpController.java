@@ -1,11 +1,16 @@
 package com.david.mvc;
 
+import com.david.model.User;
 import com.david.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 注册控制器
@@ -48,5 +53,13 @@ public class SignUpController {
             return "redirect:/login";
         }
 
+    }
+
+    @RequestMapping(value = "/signUp/validate",method = RequestMethod.POST,consumes = "application/json")
+    public @ResponseBody Map<String,Boolean> validate(@RequestBody User user){
+        boolean result = userService.findTheUser(user.getUsername());
+        Map<String,Boolean> map = new HashMap<String, Boolean>();
+        map.put("result",result);
+        return map;
     }
 }

@@ -5,9 +5,10 @@
   <head>
     <title>Just a simple WeiBo</title>
       <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
-      <script type="text/javascript" src="/resources/js/jquery-2.1.3.min.js"></script>
+      <script type="text/javascript" src="/resources/js/jquery-1.11.2.min.js"></script>
       <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
       <script type="text/javascript" src="/resources/js/home.js"></script>
+      <script type="text/javascript" src="/resources/js/jquery.json-2.2.js"></script>
   </head>
 
   <body>

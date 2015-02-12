@@ -3,12 +3,13 @@ package com.david.model;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
  * User model
  */
-public class User implements UserDetails {
+public class User implements UserDetails,Serializable {
 
     private String username;
     private String password;
@@ -18,6 +19,9 @@ public class User implements UserDetails {
     private boolean accountNonLocked;
     private boolean enabled;
     private boolean credentialsNonExpired;
+
+    public User() {
+    }
 
     public String getUsername() {
         return username;

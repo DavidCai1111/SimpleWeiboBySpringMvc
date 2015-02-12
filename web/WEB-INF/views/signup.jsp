@@ -3,17 +3,18 @@
 <head>
     <title>注册</title>
     <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
-    <script type="text/javascript" src="/resources/js/jquery-2.1.3.min.js"></script>
+    <script type="text/javascript" src="/resources/js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="/resources/js/signUp.js"></script>
+    <script type="text/javascript" src="/resources/js/jquery.json-2.2.js"></script>
 </head>
 <body>
 <h1 class="text-center">注册页</h1>
-
 <div class="container">
     <form action="/doSignup" method="post" class="col-md-5 col-md-offset-4">
         <div class="form-group">
             <label for="username">用户名：</label>
-            <input id="username"  name="username" class="form-control" type="text" placeholder="请输入用户名">
+            <input id="username"  name="username" class="form-control" type="text" placeholder="请输入用户名"><span id="validateUserName" class="text-success"></span>
         </div>
         <div class="form-group">
             <label for="passowrd">密码：</label>
