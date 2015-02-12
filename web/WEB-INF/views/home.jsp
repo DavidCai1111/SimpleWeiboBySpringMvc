@@ -1,14 +1,16 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="s" uri="http://www.springframework.org/security/tags" %>
+<!DOCTYPE HTML>
 <html>
   <head>
     <title>Just a simple WeiBo</title>
-      <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
-      <script type="text/javascript" src="/resources/js/jquery-1.11.2.min.js"></script>
-      <script type="text/javascript" src="/resources/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="/resources/js/home.js"></script>
-      <script type="text/javascript" src="/resources/js/jquery.json-2.2.js"></script>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+      <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css"/>
+      <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery-1.11.2.min.js"></script>
+      <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+      <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/home.js"></script>
+      <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery.json-2.2.js"></script>
   </head>
 
   <body>

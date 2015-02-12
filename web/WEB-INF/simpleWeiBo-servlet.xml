@@ -13,6 +13,8 @@
     <context:component-scan base-package="com.david.mvc" />
     <context:annotation-config />
 
+    <mvc:resources mapping="/resources/**" location="/WEB-INF/resources/" />
+
     <mvc:annotation-driven >
         <mvc:message-converters>
             <bean class="org.springframework.http.converter.StringHttpMessageConverter">
@@ -21,7 +23,7 @@
         </mvc:message-converters>
     </mvc:annotation-driven>
 
-    <mvc:resources mapping="/resources/**" location="/WEB-INF/rescources/" />
+
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" >
         <property name="prefix" value="/WEB-INF/views/"/>

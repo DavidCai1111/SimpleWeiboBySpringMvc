@@ -24,17 +24,19 @@ public class LoginController {
 
     @RequestMapping({"/login"})
     public String showLoginPage(){
-        return "login";
+        if(request.getSession().getAttribute("username") != null){
+            return "redirect:/";
+        }else {
+            return "login";
+        }
     }
 
     @RequestMapping({"/dologin"})
     public String doLogin(){
-        String username = request.getParameter("username");
+            String username = request.getParameter("username");
         String password = request.getParameter("password");
-        HttpSession session = request.getSession();
         boolean result = userService.checkUserInfoInForm(username, password);
         if(result){
-            session.setAttribute("username",username);
             return "redirect:/";
         }else {
             return "redirect:/login";

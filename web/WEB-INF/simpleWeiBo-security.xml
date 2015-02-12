@@ -3,27 +3,28 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:security="http://www.springframework.org/schema/security"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/security
-       http://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+       http://www.springframework.org/schema/security/spring-security.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
         <context:component-scan base-package="com.david"/>
 
         <security:global-method-security secured-annotations="enabled"/>
 
         <!--配置不过滤的静态资源-->
-        <security:http pattern="/rescources/**/**" security="none" />
+        <security:http pattern="/resources/**" security="none" />
         <!--配置不过滤的页面-->
         <security:http pattern="/login" security="none"/>
-        <security:http pattern="/signUp" security="none"/>
+        <security:http pattern="/signUp/**" security="none"/>
         <security:http pattern="/doSignup" security="none"/>
         <security:http pattern="/weibo/**" security="none"/>
 
         <!--配置访问权限-->
-        <security:http auto-config="true">
-            <security:intercept-url pattern="/admin/**" access="ROLE_ADMIN"/>
-            <security:intercept-url pattern="/**" access="ROLE_USER"/>
+        <security:http auto-config="true" use-expressions="true">
+            <security:intercept-url pattern="/admin/**" access="hasRole('ROLE_ADMIN')"/>
+            <security:intercept-url pattern="/**" access="hasRole('ROLE_USER')"/>
             <security:form-login login-page="/login" authentication-failure-url="/login" default-target-url="/"/>
             <security:remember-me key="simpleWeiBo" token-validity-seconds="2419200" />
             <security:logout logout-url="/logout"/>

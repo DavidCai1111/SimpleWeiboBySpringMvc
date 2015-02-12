@@ -3,6 +3,11 @@ package com.david.mvc;
 import com.david.model.User;
 import com.david.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,7 +33,6 @@ public class SignUpController {
 
     @RequestMapping("/signUp")
     public String showSignupPage(){
-
         if(request.getSession().getAttribute("username") != null){
             return "redirect:/";
         }else {
@@ -48,8 +52,8 @@ public class SignUpController {
         if(isSigned){
             return "redirect:/signUp";
         }else {
-            userService.addOneUser(username,password);
-            request.getSession().setAttribute("signUpSucceed",true);
+            userService.addOneUser(username, password);
+            request.getSession().setAttribute("signUpSucceed", true);
             return "redirect:/login";
         }
 
