@@ -39,6 +39,7 @@ public class HomeController {
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username = userDetails.getUsername();
         session.setAttribute("username",username);
+
         if(session.getAttribute("pageTo") == null || "".equals(session.getAttribute("pageTo"))){
             //设置总页数
             listGet = weiboService.findAll();
@@ -72,6 +73,10 @@ public class HomeController {
         session.setAttribute("pageTotal",page.getTotalPage());
         session.setAttribute("pageNow",page.getPageNow());
         session.setAttribute("TotalWeibos",page.getTotalWeibos());
+        //删除注册信息
+        if(session.getAttribute("signUpSucceed") != null){
+            session.removeAttribute("signUpSucceed");
+        }
         //存放数据模型
         model.put("weibos",listGet);
         model.put("page",page);
