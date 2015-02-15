@@ -41,11 +41,9 @@ public class WeiboService {
         int indexNeed;
         if((Integer.parseInt(totalWeibos) - Integer.parseInt(index) * 5) >= 0){
             indexNeed = Integer.parseInt(totalWeibos) - (Integer.parseInt(index) - 1) * 5 - Page.WEIBOS_SHOWN_PER_PAGE;
-            System.out.println("indexNeed: " + indexNeed);
             return weiboDao.findWeiboByLimit(indexNeed + "",false);
         }else {
             indexNeed = Integer.parseInt(totalWeibos) - (Integer.parseInt(index)-1) * 5;
-            System.out.println("indexNeed: " + indexNeed);
             return weiboDao.findWeiboByLimit(indexNeed + "",true);
         }
     }

@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * 主页控制器
@@ -41,7 +41,7 @@ public class HomeController {
         session.setAttribute("username",username);
 
         if(session.getAttribute("pageTo") == null || "".equals(session.getAttribute("pageTo"))){
-            //设置总页数
+            //查询所有微博,设置总页数
             listGet = weiboService.findAll();
             int totalPage;
             if(listGet.size() % Page.WEIBOS_SHOWN_PER_PAGE == 0){
@@ -54,11 +54,19 @@ public class HomeController {
             page.setPageNow(1);
             page.setTotalWeibos(listGet.size());
         }else {
-            System.out.println("pageTo: " + session.getAttribute("pageTo").toString());
+            //检查pageTo跳转的页数符合要求,若不符合要求跳回第一页
+            String pageTo = session.getAttribute("pageTo").toString();
+            String pageTotal = session.getAttribute("pageTotal").toString();
+            Pattern pattern = Pattern.compile("[0-9]{1,9}");
+            if(!pattern.matcher(pageTo).matches()){
+                session.setAttribute("pageTo","1");
+            }else if(Integer.parseInt(pageTo) > Integer.parseInt(pageTotal)){
+                session.setAttribute("pageTo","1");
+            }
+            //根据页数查询微博
             listGet = weiboService.findWeiboByLimit(session.getAttribute("pageTo").toString(),session.getAttribute("TotalWeibos").toString());
             //设置page
             page.setTotalPage(Integer.parseInt(session.getAttribute("pageTotal").toString()));
-            System.out.println("pageTotal: " + session.getAttribute("pageTotal").toString());
             page.setPageNow(Integer.parseInt(session.getAttribute("pageTo").toString()));
             page.setTotalWeibos(Integer.parseInt(session.getAttribute("TotalWeibos").toString()));
         }
@@ -85,7 +93,6 @@ public class HomeController {
 
     @RequestMapping({"/home/{pageTo}"})
     public String showHomePageByLimit(@PathVariable String pageTo){
-        System.out.println("pageTo in showHomePageByLimit() : " + pageTo);
         request.getSession().setAttribute("pageTo",pageTo);
         return "redirect:/";
     }
