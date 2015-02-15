@@ -3,12 +3,8 @@
 <html>
 <head>
     <title>注册</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css"/>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
+    <jsp:include page="header/header.jsp"/>
     <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/signUp.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery.json-2.2.js"></script>
 </head>
 <body>
 <h1 class="text-center">注册页</h1>
@@ -24,7 +20,6 @@
         </div>
         <button type="submit" class="btn btn-default">注册</button>
         <a href="/login" class="btn btn-primary">登录</a>
-        <a href="/" class="btn btn-danger">返回首页</a>
     </form>
 </div>
 

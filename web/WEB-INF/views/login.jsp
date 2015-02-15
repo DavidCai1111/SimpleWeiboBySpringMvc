@@ -4,11 +4,7 @@
 <html>
 <head>
     <title>登录</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="<%=request.getContextPath()%>/resources/css/bootstrap.min.css"/>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery-1.11.2.min.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/jquery.json-2.2.js"></script>
+    <jsp:include page="header/header.jsp"/>
 </head>
 <body>
     <h1 class="text-center">登录页</h1>
@@ -32,7 +28,6 @@
             </div>
             <button type="submit" class="btn btn-default">提交</button>
             <a href="/signUp" class="btn btn-primary">注册</a>
-            <a href="/" class="btn btn-danger">返回首页</a>
         </form>
     </div>
 
