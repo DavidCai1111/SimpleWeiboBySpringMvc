@@ -7,7 +7,9 @@
     <script type="text/javascript" src="<%=request.getContextPath()%>/resources/js/signUp.js"></script>
 </head>
 <body>
-<h1 class="text-center">注册页</h1>
+<h1 class="text-center">Just a Simple WeiBo</h1>
+<hr/>
+<h2 class="text-center">注册页</h2>
 <div class="container">
     <form action="/doSignup" method="post" class="col-md-5 col-md-offset-4">
         <div class="form-group">

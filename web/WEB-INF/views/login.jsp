@@ -7,7 +7,9 @@
     <jsp:include page="header/header.jsp"/>
 </head>
 <body>
-    <h1 class="text-center">登录页</h1>
+    <h1 class="text-center">Just a Simple WeiBo</h1>
+    <hr/>
+    <h2 class="text-center">登录页</h2>
 
     <div class="container">
         <form action="/j_spring_security_check" method="post" class="col-md-5 col-md-offset-4">
