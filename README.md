@@ -10,7 +10,7 @@ SpringMVC项目--小微博
     |-- 配置 WEB-INF/rescources/info/db.properties内MySQL登录信息
 
     |-- 安装依赖
-  	    |-- spring,springMVC,SpringSecurity,jaskson,jstl,MySQL java驱动。
+  	    |-- spring,springMVC,SpringSecurity,jackson,jstl,MySQL java驱动。
 	
     |-- 配置MySQL数据
   	    |-- 新建weibo数据库
