@@ -1,10 +1,11 @@
 # SimpleWeiboBySpringMvc
 SpringMVC项目--小微博
+http://123.57.73.34:8080/signUp
+
+================================
 
 ###1，项目架构
     SpringMVC + SpringSecurity + MySQL
-    
-    <a href="http://123.57.73.34:8080/signUp">http://123.57.73.34:8080/signUp</a>
 
 ###2, 项目启动
     |-- 部署至tomcat服务器
