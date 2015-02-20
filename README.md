@@ -3,6 +3,7 @@ SpringMVC项目--小微博
 
 ###1，项目架构
     SpringMVC + SpringSecurity + MySQL
+    
     http://123.57.73.34:8080/signUp
 
 ###2, 项目启动
